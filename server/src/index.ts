@@ -52,7 +52,7 @@ wss.on("connection", (socket) => {
         //     }
         // }
 
-        // 9. now see if type is join means a there a new entry of person i.e. we will append this socket into global allSocket[] array.
+        // 9. now see if type is join means a there a new entry of person i.e. we will append this socket into global allSocket[] array..
         if (parsedMessage.type == "join") {
             console.log("User Joined room " + parsedMessage.payload.roomId);
             

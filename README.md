@@ -1,3 +1,4 @@
+
 # WebSockets – Real-Time Chat Application 💬
 
 ## 📌 Overview
@@ -62,75 +63,102 @@ All client–server communication happens using JSON messages.
   }
 }
 
+#### Send Chat Message
+
+```json
+{
+  "type": "chat",
+  "payload": {
+    "message": "Hello everyone!"
+  }
+}
 ```
+
 ---
 
-🔹 Backend Flow
+### 🔹 Backend Flow
 
-WebSocket server starts on port 8080
+1. WebSocket server starts on **port 8080**
+2. When a client connects:
 
-When a client connects:
+   * The socket is stored along with its room info
+3. On `join` message:
 
-The socket is stored along with its room info
+   * User is assigned to a specific room
+4. On `chat` message:
 
-On join message:
+   * Server finds the sender’s room
+   * Message is sent only to users in that room
+5. On disconnect:
 
-User is assigned to a specific room
+   * Socket is removed from memory
 
-On chat message:
+---
 
-Server finds the sender’s room
+### 🔹 Frontend Flow
 
-Message is sent only to users in that room
+1. User selects or navigates to a room URL
+2. WebSocket connection is established
+3. Client sends a `join` event on connection
+4. Messages are sent via WebSocket
+5. Incoming messages are rendered instantly in the UI
 
-On disconnect:
+---
 
-Socket is removed from memory
+## 🚀 How to Run the Project
 
-🔹 Frontend Flow
+### 1️⃣ Start Backend
 
-User selects or navigates to a room URL
-
-WebSocket connection is established
-
-Client sends a join event on connection
-
-Messages are sent via WebSocket
-
-Incoming messages are rendered instantly in the UI
-
-🚀 How to Run the Project
-1️⃣ Start Backend
+```bash
 cd server
 npm install
 npm run dev
+```
 
 Server runs on:
 
+```
 ws://localhost:8080
-2️⃣ Start Frontend
+```
+
+---
+
+### 2️⃣ Start Frontend
+
+```bash
 cd ws_frontend
 npm install
 npm run dev
+```
 
 Frontend runs on:
 
+```
 http://localhost:5173
-🧪 How to Use
+```
 
-Open the homepage:
+---
 
-http://localhost:5173
+## 🧪 How to Use
 
-Join a room:
+1. Open the homepage:
 
-http://localhost:5173/room/red
+   ```
+   http://localhost:5173
+   ```
+2. Join a room:
 
-Open the same room in another browser/tab
+   ```
+   http://localhost:5173/room/red
+   ```
+3. Open the same room in another browser/tab
+4. Start chatting in real time 🎉
 
-Start chatting in real time 🎉
+---
 
-📂 Project Structure
+## 📂 Project Structure
+
+```
 websockets-04-chatApplication-Project/
 │
 ├── server/
@@ -143,39 +171,38 @@ websockets-04-chatApplication-Project/
 │   │   └── Home.tsx
 │
 └── README.md
-🔍 Key Concepts Covered
+```
 
-Persistent WebSocket connections
+---
 
-Room-based message routing
+## 🔍 Key Concepts Covered
 
-Socket lifecycle management
+* Persistent WebSocket connections
+* Room-based message routing
+* Socket lifecycle management
+* Real-time UI updates
+* Custom WebSocket event design
 
-Real-time UI updates
+---
 
-Custom WebSocket event design
+## 🚀 Future Improvements
 
-🚀 Future Improvements
+* Add usernames for users
+* Show join/leave notifications
+* Persist messages using a database
+* Add authentication
+* Improve UI with chat bubbles & timestamps
+* Deploy backend + frontend
 
-Add usernames for users
+---
 
-Show join/leave notifications
+## 📚 Ideal For
 
-Persist messages using a database
+* Learning real-time system design
+* Understanding WebSocket internals
+* Building chat applications
+* Preparing for backend & full-stack interviews
 
-Add authentication
+```
 
-Improve UI with chat bubbles & timestamps
-
-Deploy backend + frontend
-
-📚 Ideal For
-
-Learning real-time system design
-
-Understanding WebSocket internals
-
-Building chat applications
-
-Preparing for backend & full-stack interviews
 

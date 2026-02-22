@@ -11,6 +11,11 @@ import { WebSocket, WebSocketServer } from "ws";
 // 2. create a connection (these 2 lines are enough to create websocket)
 const wss = new WebSocketServer( {port: 8080} );
 
+// extra to check server on or not
+wss.on("listening", () => {
+  console.log("WebSocket server started on port 8080");
+});
+
 // 5. Creating as interface of user so let we can do more things like to restrict messages of partical room to itself etc  
 interface User {
     socket: WebSocket;

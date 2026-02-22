@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 function Home() {
+
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   return (
     <div className="h-screen flex items-center justify-center">
       <div className=" p-8 rounded-lg shadow-md w-[90%] max-w-xl text-center space-y-4">
@@ -22,7 +25,7 @@ function Home() {
             to="/room/red"
             className="block text-blue-600 hover:underline font-medium"
           >
-            http://localhost:5173/room/red
+            {baseUrl}/room/red
           </Link>
 
           <p className="text-slate-500 text-sm">
@@ -30,7 +33,7 @@ function Home() {
           </p>
 
           <code className="block px-3 py-2 rounded text-sm">
-            http://localhost:5173/room/&lt;roomId&gt;
+            {baseUrl}/room/&lt;roomId&gt;
           </code>
         </div>
       </div>

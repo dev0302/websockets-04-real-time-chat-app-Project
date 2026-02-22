@@ -28,7 +28,10 @@ function Chat() {
 
   useEffect( () => {
 
-    const ws = new WebSocket("ws://localhost:8080");
+    // const ws = new WebSocket("ws://localhost:8080");
+    // for production
+    const socketUrl = import.meta.env.VITE_API_URL
+    const ws = new WebSocket(socketUrl)
     wsRef.current = ws;
 
     // ws.onmessage is an event handler that runs every time the server sends a message to the client over a WebSocket connection

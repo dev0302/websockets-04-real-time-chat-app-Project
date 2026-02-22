@@ -5,15 +5,20 @@
 
 // Noo here creating a chat system
 
+import dotenv from "dotenv";
+dotenv.config(); // imp for production
+
 // 1. first import WebSocket
 import { WebSocket, WebSocketServer } from "ws";
+console.log(process.env.PORT);
 
 // 2. create a connection (these 2 lines are enough to create websocket)
-const wss = new WebSocketServer( {port: 8080} );
+const port = Number(process.env.PORT) || 8080;
+const wss = new WebSocketServer({ port });
 
 // extra to check server on or not
 wss.on("listening", () => {
-  console.log("WebSocket server started on port 8080");
+  console.log(`Server is listening on port ${port}`);
 });
 
 // 5. Creating as interface of user so let we can do more things like to restrict messages of partical room to itself etc  
